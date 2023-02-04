@@ -1,0 +1,15 @@
+[default]
+ROOT_PATH = "datasets/activity"
+#TOKEN_PATH = "datasets/activity/tokens"
+TEXT_PATH = "datasets/activity/texts"
+#CATEGORY_PATH = "datasets/activity/fasterrcnn_object_class"
+GOOGLE_OCR_PATH = "datasets/activity/google_ocr"
+embedding_path = ""
+embedding_path_glove = "datasets/activity/glove/glove_300"
+embedding_path_fasttext = "datasets/activity/fasttext"
+wikidata_path = "datasets/activity/wikidata_result"
+VISION_BOTTLE_CHECKPOINT_PATH = "best_trained_model.pth"
+NUM_CLASS = 21
+dataset_type = "activity"
+unfreeze_all_step = 2310
+num_epoch_freeze = 30

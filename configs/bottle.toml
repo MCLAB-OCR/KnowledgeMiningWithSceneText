@@ -1,0 +1,15 @@
+[default]
+ROOT_PATH = "datasets/bottle"
+#TOKEN_PATH = "datasets/bottle/bottle_token"
+TEXT_PATH = "datasets/bottle/texts"
+#CATEGORY_PATH = "datasets/bottle/fasterrcnn_object_class"
+GOOGLE_OCR_PATH = "datasets/bottle/google_ocr"
+embedding_path = ""
+embedding_path_glove = "datasets/bottle/glove/glove_300"
+embedding_path_fasttext = "datasets/bottle/fasttext"
+wikidata_path = "datasets/bottle/wikidata_result"
+VISION_BOTTLE_CHECKPOINT_PATH = "best_trained_model.pth"
+NUM_CLASS = 20
+dataset_type = "bottle"
+unfreeze_all_step = 1540
+num_epoch_freeze = 40

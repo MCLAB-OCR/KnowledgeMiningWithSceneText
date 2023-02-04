@@ -1,0 +1,29 @@
+[default.interaction]
+
+
+[default]
+dynaconf_include = ["train_base.toml", "context.toml"] # activity.toml, bottle.toml, context.toml
+
+interaction_model = true
+VISION_BACKBONE = "vit" # "vit", "resnet152"
+IMG_ONLY = false
+USE_TIMM = true
+TEXT_BACKBONE = "knowbert"    # "bert","knowbert","glove","fasttext"
+TOKEN_ONLY = false
+POSITION_EMBEDDING = false
+head_type = 18
+attention_dev = false
+vkac_dropout = 0.0
+
+PRETRAINED_VISION = "ImageNet"                                                        # "ImageNet" or "Bottle"
+PRETRAINED_BERT = "Wikipedia"                                                         # "Wikipedia", "MaskLanguageModel" or "Bottle"
+VISION_BOTTLE_CHECKPOINT_PATH = "output/20210707_095626_359715/8000trained_model.pth"
+PRETRAINED_WHOLE_MODEL = "None"
+
+FREEZE_VIT_KNOWBERT = false
+debug = false
+
+use_google_ocr = true
+use_paddle_ocr = false
+use_category = false
+use_bbox_embedding = false

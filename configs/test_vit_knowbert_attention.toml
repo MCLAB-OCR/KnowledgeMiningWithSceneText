@@ -1,0 +1,23 @@
+[default.interaction]
+
+
+[default]
+dynaconf_include = ["test_base.toml", "activity.toml"] # activity.toml, bottle.toml, context.toml
+
+generate_example = true
+CHECKPOINT_PATH = "outputs/vit-kb-attention-activity-copy-9761/best_trained_model.pth"
+
+interaction_model = true
+VISION_BACKBONE = "vit" # "vit", "resnet152"
+IMG_ONLY = false
+USE_TIMM = true
+TEXT_BACKBONE = "knowbert"    # "bert","knowbert","glove","fasttext"
+TOKEN_ONLY = false
+POSITION_EMBEDDING = false
+head_type = 18
+
+debug = true
+
+use_google_ocr = false
+use_paddle_ocr = false
+use_category = false

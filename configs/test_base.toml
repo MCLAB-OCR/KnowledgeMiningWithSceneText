@@ -1,0 +1,27 @@
+[default]
+TEST_ONLY = true
+
+# IS_TESTING_LR_RANGE = false
+# BERT_MLM_CHECKPOINT_PATH = "pretrained/BERT_pretrained_mlm.pth"          # "projects/finetune_bert/output/20210520_220426_807989/24trained_model.pth"
+# BERT_BOTTLE_CHECKPOINT_PATH = "pretrained/BERT_pretrained_on_bottle.pth" # "projects/bert-bottle-classification/output/20210619_134758_541359/7trained_model.pth"
+# VIT_IMAGENET_CHECKPOINT_PATH = "pretrained/ViT-B_16.npz"
+# USE_AMP = true
+OUTPUT_DIR = "./outputs"
+SEED = 42
+
+# LR = 3e-5
+# LR_COSINE_T0 = 500
+# LR_COSINE_T_MULT = 2
+# LR_WARMUP_STEP = 500
+# NUM_EPOCHS = 10
+BATCH_SIZE_PERGPU = 9
+NUM_WORKERS = 0
+# SGD_WEIGHT_DECAY = 0
+# SGD_MOMENTUM = 0.9
+
+# SAVE_MODEL_EVERY_STEP = 8000
+# VALIDATION_EVERY_STEP = 200
+# LOG_EVERY_STEP = 20
+
+CPU_NUM_THREADS = 2
+DEVICE = "cuda"

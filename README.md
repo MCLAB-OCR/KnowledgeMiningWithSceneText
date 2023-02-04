@@ -2,32 +2,105 @@
 https://github.com/MCLAB-OCR/KnowledgeMiningWithSceneText
 
 This is the official repo of the paper [Knowledge Mining with Scene Text for Fine-Grained Recognition](https://doi.org/10.1109/CVPR52688.2022.00458) in CVPR 2022. 
-If you find our paper or dataset helpful, please star this repo and cite our paper. Thank you very much!
+If you find our repo, paper or dataset helpful, please star this repo, cite our paper. Thank you!
 
-## Crowd Activity Dataset
-![example](https://user-images.githubusercontent.com/33376945/160324328-57f3e81e-815e-4664-8685-3201e0b7919a.png)
-### Introduction
-This dataset concentrates on the activities of the crowd for a fine-grained image classification task, named as Crowd Activity dataset, as automatically understanding crowd activity is meaningful for social security. This dataset is newly collected, where the images are mainly searched on the Internet and collected from streets by mobile phones. All images in this dataset contain at least one text instance. The categories come from activities of daily living and demonstrations stimulated by hot events in recent years. Specifically, this dataset consists of 21 categories and 8785 images in total. The 21 categories broadly fall into two types: activities of daily living(i.e., celebrating Christmas, holding sport meeting, holding concert, celebrating birthday party, celebrity speech, teaching, graduation ceremony, picnic, press briefing, shopping, celebrating Thanks giving day) and demonstrations (i.e., protecting animals, protecting environment, appealing for peace, Brexit, COVID-19, election, immigrant, respecting female, racial equality, mouvement des gilets jaunes).
-### Download
-#### 1. MEGA
-https://mega.nz/file/HIs3RJrI#0Kms2v_112pfrb7wEPODOwUPuG4outczZXAUmpKjsuI
-#### 2. academictorrents.com (**Seeding is welcoming!**)
-https://academictorrents.com/details/49d65f0d512c6d4a23aeafe20cd41f20cf1267be
+## Installation
+### 1. Get the code
+First, clone this repo and cd into it.
+Then clone these codes:
+```
+git clone https://github.com/AndresPMD/Fine_Grained_Clf
+git clone https://github.com/jeonsworld/ViT-pytorch
+git clone https://github.com/allenai/kb
+git clone https://github.com/matt-peters/allennlp.git
+```
 
-## Other Datasets
-Con-Text: https://staff.fnwi.uva.nl/s.karaoglu/datasetWeb/Dataset.html
+### 2. Create environment
+```
+conda env create -f env.yml
+conda activate vit_kb
 
-Drink Bottle: https://drive.google.com/file/d/1bJUXb7OZBO-Fgo5OaMeHI1I2JlD4oqW3/view?usp=share_link
+pip install -r exact_requirements.txt
 
-## Code
-Code will be released in February, 2023.
+cd allennlp; git checkout 2d7ba1cb108428aaffe2dce875648253b44cb5ba
+pip install -e .
+cd ..
+
+cd kb
+pip install -r requirements.txt 
+python -c "import nltk; nltk.download('wordnet')"
+pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.0.0/en_core_web_sm-2.0.0.tar.gz
+pip install -e .
+cd ..
+```
+
+## Dataset prepare
+### 1. Download datasets
+see [README_datasets.md](README_datasets.md).
+### 2. Put in `datasets/`
+Folder structure
+```
+datasets
+├── activity
+│   ├── texts
+│   └── images
+├── bottle
+│   ├── google_ocr
+│   └── images
+└── context
+    ├── google_ocr
+    └── JPEGImages
+```
+
+## Usage
+### 1. Train
+```
+python main.py -c CONFIG_PATH
+```
+for example:
+```
+python main.py -c configs/train_knowbert_attention_activity.toml
+```
+You can also pass parameters like this:
+```
+python main.py -c CONFIG_PATH --text_dir ./datasets/activity/texts --cfgs OUTPUT_DIR ./outputs NUM_EPOCHS 50 BATCH_SIZE_PERGPU 8
+```
+The parameters after "--cfgs" are config items in configs/*.toml
+### 2. Test
+```
+python main.py -c TEST_CONFIG_PATH
+```
+
+## Trouble Shootings
+### 1
+TypeError: ArrayField.empty_field: return type \`None\` is not a \`<class 'allennlp.data.fields.field.Field'>\`.
+
+Solution:
+
+pip install overrides==3.1.0
+
+### 2
+ModuleNotFoundError: No module named 'sklearn.utils.linear_assignment_'
+
+Solution:
+
+pip install scikit-learn==0.22.1
+
+
+### 3 
+Error when run "pip install en_core_web_sm"
+
+Solution:
+
+conda install spacy-model-en_core_web_sm
+
+### 4
+if stuck when run `pip install -r kb/requirement.txt`, comment out the "git+git://" line in the kb/requirements.txt
 
 ## Sensitive Detection Demo
 https://user-images.githubusercontent.com/33376945/198250812-59741ff5-2f2f-4363-a7e6-986773479fa6.mp4
 
-## Reference
-If you find this Repo useful, please cite this paper like this:
-
+## Citation
 ```
 @inproceedings{Wang2022_KnowledgeMining,
   author    = {Wang, Hao and Liao, Junchao and Cheng, Tianheng and Gao, Zewen and Liu, Hao and Ren, Bo and Bai, Xiang and Liu, Wenyu},
@@ -49,3 +122,6 @@ https://github.com/allenai/kb
 https://github.com/rwightman/pytorch-image-models
 
 https://github.com/huggingface/transformers
+
+
+

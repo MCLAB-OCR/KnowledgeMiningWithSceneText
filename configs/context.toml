@@ -1,0 +1,15 @@
+[default]
+ROOT_PATH = "datasets/context"
+#TOKEN_PATH = "datasets/context/tokens"
+TEXT_PATH = "datasets/context/texts"
+#CATEGORY_PATH = "datasets/context/fasterrcnn_object_class"
+GOOGLE_OCR_PATH = "datasets/context/google_ocr"
+embedding_path = ""
+embedding_path_glove = "datasets/context/glove/glove_300"
+embedding_path_fasttext = "datasets/context/fasttext"
+wikidata_path = "datasets/context/wikidata_result"
+VISION_BOTTLE_CHECKPOINT_PATH = "best_trained_model.pth"
+NUM_CLASS = 28
+dataset_type = "context"
+unfreeze_all_step = 2022
+num_epoch_freeze = 40
